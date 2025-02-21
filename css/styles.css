@@ -1,0 +1,608 @@
+/* 全局样式，设置字体和背景颜色 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f6c6d7;
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* 背景图片样式 */
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 让图片覆盖整个屏幕 */
+    z-index: -1; /* 设置 z-index 为负数，确保图片在最下层 */
+}
+
+/* 固定宽度和高度的容器 */
+#main-container {
+    width: 1920px;
+    height: 1080px;
+    transform-origin: top left;
+    overflow: auto;
+}
+
+/* 整体设置部分样式 */
+#setup {
+    text-align: center;
+    margin-top: 120px;
+    background-color: rgba(255, 255, 255, 0.7); /* 半透明背景 */
+    backdrop-filter: blur(10px); /* 磨砂玻璃效果 */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#setup h2 {
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+}
+
+#setup label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 1.1em;
+}
+
+#setup input {
+    width: 50%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1.1em;
+    background-color: rgba(255, 255, 255, 0.7); /* 半透明背景 */
+    backdrop-filter: blur(10px); /* 磨砂玻璃效果 */
+}
+
+/* 美化 #setup 内的 select 选择器 */
+#setup #games {
+    width: 25%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.9); /* 半透明背景，增加不透明度 */
+    backdrop-filter: blur(10px); /* 磨砂玻璃效果 */
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #333;
+    appearance: none; /* 去除默认的下拉箭头 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* 自定义下拉箭头 */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    transition: all 0.3s ease;
+}
+
+#setup #games:hover {
+    background-color: rgba(255, 255, 255, 1); /* 鼠标悬停时背景变为不透明 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#setup #games:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3); /* 聚焦时的阴影效果 */
+}
+
+/* 美化下拉选项 */
+#setup #games option {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    padding: 12px 15px; /* 增加内边距，让选项内容更宽松 */
+    transition: background-color 0.3s ease; /* 添加过渡效果 */
+}
+
+#setup #games option:hover {
+    background-color: rgba(0, 123, 255, 0.1); /* 鼠标悬停时的背景颜色 */
+}
+
+#setup #games option:checked {
+    background-color: rgba(0, 123, 255, 0.3); /* 选中时的背景颜色 */
+    color: white; /* 选中时的文本颜色 */
+}
+
+#setup button {
+    background-color: rgba(0, 123, 255, 0.7); /* 半透明背景 */
+    backdrop-filter: blur(10px); /* 磨砂玻璃效果 */
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1.1em;
+}
+
+#setup button:hover {
+    background-color: rgba(0, 86, 179, 0.7); /* 半透明背景 */
+}
+
+/* BP 容器部分样式 */
+#bp-container {
+    text-align: center;
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.7); /* 半透明背景 */
+    backdrop-filter: blur(10px); /* 磨砂玻璃效果 */
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* BP 显示区域样式 */
+#bp-display {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 30px;
+    align-items: center; /* 垂直居中对齐 */
+}
+
+/* 队伍样式 */
+.team {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(249, 249, 249, 0.7); /* 半透明背景 */
+    backdrop-filter: blur(10px); /* 磨砂玻璃效果 */
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* 左队样式 */
+.team.left {
+    align-items: flex-start;
+    height: 380px;
+}
+
+/* 右队样式 */
+.team.right {
+    align-items: flex-end;
+    height: 380px;
+}
+
+.team h3 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 1.5em;
+}
+
+/* 设置蓝方队伍名称颜色为蓝色 */
+#blue-team-name {
+    color: #6593c9;
+}
+
+/* 设置红方队伍名称颜色为红色 */
+#red-team-name {
+    color: #c73738;
+}
+
+/* 新增黑白图片样式 */
+.grayscale {
+    filter: grayscale(100%);
+}
+
+/* 禁用、选择和使用过的英雄区域样式 */
+.ban-area,
+.pick-area {
+    min-height: 110px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: nowrap; /* 防止换行 */
+    align-items: center;
+    justify-content: flex-start; /* 从左到右排列 */
+    width: 100%;
+    max-width: 492px;
+    background-color: rgba(255, 255, 255, 0.7); /* 半透明背景 */
+    backdrop-filter: blur(10px); /* 磨砂玻璃效果 */
+    border-radius: 10px;
+    padding: 5px;
+    box-sizing: border-box;
+    overflow-x: auto; /* 水平溢出时显示滚动条 */
+    overflow-y: hidden; /* 垂直方向隐藏溢出内容 */
+}
+
+/* used-area 分隔元素样式 */
+.used-group-separator {
+    width: 20px; /* 调整间隔宽度为 20px，作为空格分隔 */
+    height: 1px; /* 高度设为 1px，避免影响布局 */
+    visibility: visible; /* 确保分隔元素可见 */
+}
+
+.used-area {
+    min-height: 90px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.7); /* 半透明背景 */
+    backdrop-filter: blur(10px); /* 磨砂玻璃效果 */
+    border-radius: 10px;
+    padding: 5px;
+    box-sizing: border-box;
+    overflow-y: auto; 
+}
+
+/* 禁用、选择和使用过的英雄区域内图片样式 */
+.ban-area img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    margin: 3px;
+    border-radius: 10px;
+    flex-shrink: 0; /* 不缩小 */
+    flex-basis: 60px; /* 基础大小 */
+    filter: grayscale(100%); /* 添加这行代码让 ban-area 图片变为黑白 */
+}
+
+.pick-area img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    margin: 3px;
+    border-radius: 10px;
+    flex-shrink: 0; /* 不缩小 */
+    flex-basis: 60px; /* 基础大小 */
+}
+
+.used-area img {
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    margin: 1px;
+    border-radius: 3px;
+}
+
+.used-area .separator-img {
+    width: 10px;
+    height: 55px;
+    object-fit: cover;
+    margin: 1px;
+    border-radius: 3px;
+}
+
+/* 英雄类型列表样式 */
+#hero-type-list {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: rgba(249, 249, 249, 0.7); /* 半透明背景 */
+    backdrop-filter: blur(10px); /* 磨砂玻璃效果 */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 英雄类型按钮样式 */
+.hero-type-button {
+    margin: 5px;
+    background-color: rgba(0, 123, 255, 0.7); /* 半透明背景 */
+    backdrop-filter: blur(10px); /* 磨砂玻璃效果 */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1em;
+}
+
+.hero-type-button:hover {
+    background-color: rgba(0, 86, 179, 0.7); /* 半透明背景 */
+}
+
+/* 英雄列表样式 */
+#hero-list {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: rgba(249, 249, 249, 0.7); /* 半透明背景 */
+    backdrop-filter: blur(10px); /* 磨砂玻璃效果 */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    box-sizing: border-box;
+    max-height: 220px; 
+    overflow-y: auto; /* 添加垂直滚动条 */
+}
+
+/* 英雄按钮样式 */
+.hero {
+    position: relative;
+    margin: 5px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.hero:hover {
+    transform: scale(1.1);
+}
+
+/* 英雄按钮内图片样式 */
+.hero img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* 英雄名称样式 */
+.hero-name {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 2px 6px;
+    font-size: 0.8em;
+    border-radius: 4px;
+}
+
+/* 撤销按钮样式 */
+#undo {
+    margin-bottom: 30px;
+    background-color: rgba(220, 53, 69, 0.7); /* 半透明背景 */
+    backdrop-filter: blur(10px); /* 磨砂玻璃效果 */
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1.1em;
+}
+
+#undo:hover {
+    background-color: rgba(200, 35, 51, 0.7); /* 半透明背景 */
+}
+
+/* 结束操作按钮组和换边操作按钮组样式 */
+#end-buttons,
+#swap-buttons {
+    margin-bottom: 30px;
+}
+
+#end-buttons button,
+#swap-buttons button {
+    background-color: rgba(40, 167, 69, 0.7); /* 半透明背景 */
+    backdrop-filter: blur(10px); /* 磨砂玻璃效果 */
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 0 8px;
+    transition: background-color 0.3s ease;
+    font-size: 1.1em;
+}
+
+#end-buttons button:hover,
+#swap-buttons button:hover {
+    background-color: rgba(33, 136, 56, 0.7); /* 半透明背景 */
+}
+
+/* 设置部分 - 场数选择样式 */
+#setup label[for="games"] {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    text-align: center;
+    margin-left: calc((100% - 100%) / 2);
+    font-size: 1.1em;
+}
+
+/* 返回按钮样式 */
+#back-to-types {
+    background-color: rgba(108, 117, 125, 0.7); /* 半透明背景 */
+    backdrop-filter: blur(10px); /* 磨砂玻璃效果 */
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+    font-size: 1.1em;
+}
+
+#back-to-types:hover {
+    background-color: rgba(90, 98, 104, 0.7); /* 半透明背景 */
+}
+
+#current-phase {
+    text-align: center;
+    margin: 20px auto;
+    width: fit-content;
+    max-width: 80%;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px 25px;
+    font-size: 1.3em;
+    color: #333;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* 倒计时样式 */
+.countdown {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1.5em;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* 系统提示样式 */
+#system-prompt {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1.2em;
+    color: #d9534f;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* used-area 分隔元素样式 */
+.used-group-separator {
+    width: 100%;
+    height: 20px; /* 间隔高度 */
+}
+
+/* 遮罩层样式 */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+/* 弹出层样式 */
+#all-heroes-popup {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 1200px;
+    max-height: 80%;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* 全部英雄弹出层中每个分类的容器样式 */
+.hero-category-container {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* 全部英雄弹出层中分类标题样式 */
+.hero-category-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: left;
+    width: 100%;
+    padding-left: 10px;
+}
+
+/* 全部英雄弹出层中英雄列表容器样式 */
+.hero-category-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+/* 媒体查询，适配手机设备 */
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 0.8em;
+    }
+
+    #main-container {
+        width: 100%;
+        height: auto;
+        transform: none;
+    }
+
+    #setup {
+        width: 80%;
+        margin-top: 50px;
+        padding: 20px;
+    }
+
+    #bp-container {
+        width: 90%;
+        margin-top: 30px;
+    }
+
+    #bp-display {
+        flex-direction: column;
+    }
+
+    .team {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .team.left,
+    .team.right {
+        align-items: center;
+        height: auto;
+    }
+
+    .ban-area,
+    .pick-area {
+        max-width: 100%;
+    }
+
+    #hero-type-list,
+    #hero-list {
+        width: 90%;
+    }
+
+    #end-buttons button,
+    #swap-buttons button,
+    #undo,
+    #back-to-types {
+        padding: 10px 20px;
+    }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>多达洛·幻刃影的BP小屋</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <img src="img/A01背景.jpg" alt="示例" class="background-image">
+    <div id="setup">
+        <h2>队伍设置</h2>
+        <label for="blue-team">首局蓝方:</label>
+        <input type="text" id="blue-team" value="">
+        <label for="red-team">首局红方:</label>
+        <input type="text" id="red-team" value="">
+        <label for="games">BO:</label>
+        <select id="games">
+            <option value="1">1</option>
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="7">7</option>
+            <option value="9">9</option>
+        </select>
+        <button id="start">开始</button>
+    </div>
+    <div id="bp-container" style="display: none;">
+        <div id="bp-display">
+            <div class="team left">
+                <h3 id="blue-team-name">蓝方</h3>
+                <div class="ban-area" id="blue-ban"></div>
+                <div class="pick-area" id="blue-pick"></div>
+                <div class="used-area" id="blue-used"></div>
+            </div>
+            <!-- 新增倒计时显示元素 -->
+            <div id="countdown" class="countdown"></div>
+            <div class="team right">
+                <h3 id="red-team-name">红方</h3>
+                <div class="ban-area" id="red-ban"></div>
+                <div class="pick-area" id="red-pick"></div>
+                <div class="used-area" id="red-used"></div>
+            </div>
+        </div>
+        <!-- 显示提示文字的元素 -->
+        <div id="system-prompt" style="text-align: center; margin-bottom: 10px; display: none;"></div>
+        <div id="hero-type-list">
+            <button class="hero-type-button" data-type="空Ban">空Ban</button>
+            <button class="hero-type-button" data-type="全部">全部</button>
+            <button class="hero-type-button" data-type="对抗路">对抗路</button>
+            <button class="hero-type-button" data-type="打野">打野</button>
+            <button class="hero-type-button" data-type="中路">中路</button>
+            <button class="hero-type-button" data-type="发育路">发育路</button>
+            <button class="hero-type-button" data-type="游走">游走</button>
+        </div>
+        <div id="hero-list" style="display: none;">
+        </div>
+        <button id="back-to-types" style="display: none;">返回</button>
+        <button id="undo" disabled>撤销</button>
+        <div id="end-buttons" style="display: none;">
+            <button id="save">保存本局</button>
+            <button id="delete">删除本局</button>
+            <button id="finish">结束大场</button>
+        </div>
+        <div id="swap-buttons" style="display: none;">
+            <button id="swap" onclick="handleSwap()">换边</button>
+            <button id="no-swap" onclick="handleNoSwap()">不换边</button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
